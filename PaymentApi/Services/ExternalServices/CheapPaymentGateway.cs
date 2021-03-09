@@ -16,14 +16,6 @@ namespace PaymentApi.Services.ExternalServices
     {
         public HttpResponseMessage ProcessPayment(PaymentRequest payment)
         {
-            //var json = JsonConvert.SerializeObject(payment);
-            //var url = $"https://www.c-sharpcorner.com/mytestpagefor404";
-
-            //var client = _clientFactory.CreateClient("cheapPayment");
-            //var response = await client.PostAsJsonAsync(url, payment);
-
-            //var result = await response.Content.ReadAsStringAsync();
-
             var response = RandomResponse.GetResponse();
             return response;
         }

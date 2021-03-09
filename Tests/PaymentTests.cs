@@ -144,12 +144,6 @@ namespace Tests
                 mock.Mock<IProcessPaymentService>()
                     .Setup(x => x.ProcessPayment(paymentStatus));
 
-                //mock.Mock<IBackgroundJobClient>()
-                //    .Setup(x => x.Enqueue(() => );
-
-
-
-
                 client.Setup(x => x.Create(It.IsAny<Job>(), It.IsAny<EnqueuedState>()));
 
                 client.Invoking(e => e.Verify(x => x.Create(
@@ -157,16 +151,7 @@ namespace Tests
                     It.Is<Job>(job => job.Type.Name == "ProcessPaymentService" && job.Method.Name == "ProcessPayment" && job.Args[0] == paymentStatus),
                     It.IsAny<EnqueuedState>()), Times.Once));
 
-
-
                 var result = await paymentService.CreatePayment(paymentRequest);
-
-                
-
-
-                //var result = await paymentService.CreatePayment(paymentRequest);
-
-                //result.Id.Should().Be(paymentId);
             }
         }
     }
