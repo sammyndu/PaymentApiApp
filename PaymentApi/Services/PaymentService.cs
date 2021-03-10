@@ -77,13 +77,8 @@ namespace PaymentApi.Services
             await _unitOfWork.CompleteAsync();
 
             PaymentResource paymentAdded = new PaymentResource();
-            try 
-            {
-                paymentAdded = _mapper.Map<PaymentResource>(payment);
-            } catch(Exception e)
-            {
-                var m = e;
-            }
+            
+            paymentAdded = _mapper.Map<PaymentResource>(payment);
 
             _backgroundJobClient.Enqueue<IProcessPaymentService>(e => e.ProcessPayment(paymentStatus));
 

@@ -23,15 +23,8 @@ namespace PaymentApi.Data.Repositories
 
         public async Task<Payment> GetPayment(Guid id)
         {
-            try
-            {
-                var result = await _db.Payments.Where(x => x.Id == id).FirstOrDefaultAsync();
-                return result;
-            }catch(Exception e)
-            {
-                var mes = e;
-                return null;
-            }
+           
+            return await _db.Payments.Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public void CreatePayment(Payment payment)
